@@ -1,4 +1,9 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<map>
+#include<cmath>
+#include<stdlib.h>
+#include<climits>
 using namespace std;
 vector<vector<vector<pair <int , int > > > > vec (100 ,vector<vector<pair < int , int > > >(100));   // 3D Vector
 int dist(int a,int b,int c,int d)																	// Function to calculate distance
@@ -9,7 +14,7 @@ void dfs(pair < int , int > p , int visit[100][100],int x,int y)			   	// Functi
 {
 	int r1=p.first;
 	int r2=p.second;
-	
+
 	visit[r1][r2]=1;
 	cout<<r1<<" "<<r2<<endl;
 	if (r1==x && r2==y)															// If we reach starting coordinates, exit the fucnction
@@ -37,7 +42,7 @@ int main()
 	cout<<"Enter Ending Coordinates: "<<endl;
 	cin>>x2>>y2;
 	o1=5,o2=6;               //Obstacle
-	int ep=5;
+	int ep=4;
 int track[100][100]={0};					// 2D Matrix to keep track of nodes included in the plane
 
 while (true)
@@ -99,13 +104,14 @@ else								// Else a point in the direction of the randomly generated coordinat
 	vec[r1][r2].push_back(p);
 	track[r1][r2]=1;
 }
-if (dist(r1,x2,r2,y2)<=ep)						// If the node is near (distance less than epilson(ep)) to the ending point we break from the loop and dfs function is called for path  
+if (dist(r1,x2,r2,y2)<=ep)						// If the node is near (distance less than epilson(ep)) to the ending point we break from the loop and dfs function is called for path
 {
 	int visit[100][100]={0};
 	pair<int,int>p;
 	p.first=r1;
 	p.second=r2;
 	cout<<"The Path is as Follows:"<<endl;
+  cout<<"\n";
 	cout<<x2<<" "<<y2<<endl;
 	dfs(p,visit,s1,s2);
 	break;
